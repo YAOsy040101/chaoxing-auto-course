@@ -1,3 +1,3 @@
 interface:
-  display_name: "自动刷课"
-  short_description: "通过正常浏览器操作续学超星视频与章节练习，减少重复读取和点击"
+  display_name: "超星学习通自动刷课"
+  short_description: "续学超星学习通视频与章节练习，准确计时、批量填写并统计 token 消耗"

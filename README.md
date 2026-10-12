@@ -1,8 +1,22 @@
-# 自动刷课
+# Chaoxing Auto Course · 超星学习通自动刷课 Codex Skill
+
+A Codex skill for **Chaoxing / Xuexitong (超星学习通、超星尔雅)** course continuation: timed video playback, batch chapter exercises, browser automation, and per-chapter token accounting.
 
 中文 Codex skill：在用户授权的超星/学习通课程中，通过正常浏览器界面续学视频、处理章节练习，并减少重复截图、全局扫描和逐题确认。
 
 适用场景：已登录课程的续学、需要鼠标停留播放器的课程、短章节练习，以及希望按章节衡量 token 消耗的工作流。它是给 Codex 的操作指导，不是独立运行的刷课软件。不会修改学习记录、跳过播放、绕过验证码或自动扩展到考试。
+
+## 场景与特点
+
+| 使用场景 | 工作流特点 |
+| --- | --- |
+| 超星学习通、尔雅课程中断后继续学习 | 复用已登录标签页，从真实进度恢复 |
+| 视频要求鼠标停留在播放器 | 正常播放并保持鼠标位置，按剩余时长等待 |
+| 每节视频结束后出现章节练习 | 集中读题与查证、批量选择、统一核对 |
+| 题目较长，滚动或定位容易误点 | 当前视口定位，滚动后使旧坐标失效 |
+| 希望减少 Codex 的重复读取 | 不在播放中扫描页面，按章节统计缓存与新增 token |
+
+浏览器操作由 Codex 执行；统计脚本可单独运行。节省量取决于课程、工具延迟和会话上下文，需用同口径实测。
 
 ## 环境
 
@@ -15,12 +29,12 @@
 克隆本仓库后，把 `skills/chaoxing-course-workflow` 文件夹放到你的 Codex skills 目录。Windows PowerShell：
 
 ```powershell
-git clone https://github.com/YAOsy040101/auto-course.git
+git clone https://github.com/YAOsy040101/chaoxing-auto-course.git
 $skillRoot = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME 'skills' } else { Join-Path $env:USERPROFILE '.codex/skills' }
 $skillTarget = Join-Path $skillRoot 'chaoxing-course-workflow'
 if (Test-Path -LiteralPath $skillTarget) { throw '已安装：请先备份现有技能再更新。' }
 New-Item -ItemType Directory -Force -Path $skillRoot | Out-Null
-Copy-Item -LiteralPath './auto-course/skills/chaoxing-course-workflow' -Destination $skillTarget -Recurse
+Copy-Item -LiteralPath './chaoxing-auto-course/skills/chaoxing-course-workflow' -Destination $skillTarget -Recurse
 ```
 
 macOS/Linux 同样复制整个技能文件夹到 `${CODEX_HOME:-$HOME/.codex}/skills/`。在新一轮对话中使用；未显示时重启 Codex。
