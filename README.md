@@ -1,4 +1,4 @@
-# Chaoxing Course Workflow
+# 自动刷课
 
 中文 Codex skill：在用户授权的超星/学习通课程中，通过正常浏览器界面续学视频、处理章节练习，并减少重复截图、全局扫描和逐题确认。
 
@@ -15,12 +15,12 @@
 克隆本仓库后，把 `skills/chaoxing-course-workflow` 文件夹放到你的 Codex skills 目录。Windows PowerShell：
 
 ```powershell
-git clone https://github.com/YAOsy040101/chaoxing-course-workflow.git
+git clone https://github.com/YAOsy040101/auto-course.git
 $skillRoot = if ($env:CODEX_HOME) { Join-Path $env:CODEX_HOME 'skills' } else { Join-Path $env:USERPROFILE '.codex/skills' }
 $skillTarget = Join-Path $skillRoot 'chaoxing-course-workflow'
 if (Test-Path -LiteralPath $skillTarget) { throw '已安装：请先备份现有技能再更新。' }
 New-Item -ItemType Directory -Force -Path $skillRoot | Out-Null
-Copy-Item -LiteralPath './chaoxing-course-workflow/skills/chaoxing-course-workflow' -Destination $skillTarget -Recurse
+Copy-Item -LiteralPath './auto-course/skills/chaoxing-course-workflow' -Destination $skillTarget -Recurse
 ```
 
 macOS/Linux 同样复制整个技能文件夹到 `${CODEX_HOME:-$HOME/.codex}/skills/`。在新一轮对话中使用；未显示时重启 Codex。

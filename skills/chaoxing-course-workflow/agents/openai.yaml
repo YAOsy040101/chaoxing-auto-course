@@ -1,0 +1,3 @@
+interface:
+  display_name: "自动刷课"
+  short_description: "通过正常浏览器操作续学超星视频与章节练习，减少重复读取和点击"
